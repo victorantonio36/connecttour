@@ -20,13 +20,13 @@ const Hero = ({ language }: HeroProps) => {
     pt: {
       title: "Descubra Angola",
       subtitle: "A ponte que une cultura, confiança e tecnologia para revelar o futuro do turismo em Angola",
-      cta1: "Explorar Destinos",
+      cta1: "Explorar Serviços",
       cta2: "Conhecer Plataforma",
     },
     en: {
       title: "Discover Angola",
       subtitle: "The bridge that unites culture, trust and technology to reveal the future of tourism in Angola",
-      cta1: "Explore Destinations",
+      cta1: "Explore Services",
       cta2: "Learn More",
     },
   };
@@ -62,6 +62,9 @@ const Hero = ({ language }: HeroProps) => {
             <Button
               size="lg"
               className="gradient-hero text-primary-foreground hover:opacity-90 transition-opacity group gap-2"
+              onClick={() => {
+                document.getElementById("explorar")?.scrollIntoView({ behavior: "smooth" });
+              }}
             >
               {text.cta1}
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />

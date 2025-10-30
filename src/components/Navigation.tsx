@@ -20,8 +20,25 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
   }, []);
 
   const navItems = language === "pt" 
-    ? ["Início", "Sobre", "Destinos", "Parceiros", "Contato"]
-    : ["Home", "About", "Destinations", "Partners", "Contact"];
+    ? ["Início", "Missão", "Explorar", "Parceiros", "Contato"]
+    : ["Home", "Mission", "Explore", "Partners", "Contact"];
+
+  const navLinks = {
+    pt: {
+      "Início": "#",
+      "Missão": "#missao",
+      "Explorar": "#explorar",
+      "Parceiros": "#parceiros",
+      "Contato": "#contato"
+    },
+    en: {
+      "Home": "#",
+      "Mission": "#missao",
+      "Explore": "#explorar",
+      "Partners": "#parceiros",
+      "Contact": "#contato"
+    }
+  };
 
   return (
     <nav
@@ -49,7 +66,7 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
             {navItems.map((item) => (
               <a
                 key={item}
-                href={`#${item.toLowerCase()}`}
+                href={navLinks[language][item as keyof typeof navLinks.pt]}
                 className="text-sm font-medium text-foreground hover:text-primary transition-colors"
               >
                 {item}
@@ -84,7 +101,7 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
             {navItems.map((item) => (
               <a
                 key={item}
-                href={`#${item.toLowerCase()}`}
+                href={navLinks[language][item as keyof typeof navLinks.pt]}
                 className="block py-2 text-sm font-medium text-foreground hover:text-primary transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
