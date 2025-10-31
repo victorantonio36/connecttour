@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import luandaImage from "@/assets/luanda.jpg";
+import malanjeImage from "@/assets/malanje.webp";
 
 interface HeroProps {
   language: "pt" | "en";
@@ -43,8 +43,8 @@ const Hero = ({ language }: HeroProps) => {
         }}
       >
         <img
-          src={luandaImage}
-          alt="Cidade de Luanda"
+          src={malanjeImage}
+          alt="Quedas de Kalandula, Malanje"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background" />
