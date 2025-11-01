@@ -28,7 +28,7 @@ export const featuredProvinces: Province[] = [
     id: '1',
     name: 'Namibe',
     slug: 'namibe',
-    image: '/src/assets/provinces/namibe-desert.webp',
+    image: '/assets/provinces/namibe-desert.webp',
     description: {
       pt: 'Deserto do Namibe e Parque Nacional da Iona, paisagens surreais únicas em África',
       en: 'Namibe Desert and Iona National Park, surreal landscapes unique in Africa'
@@ -52,7 +52,7 @@ export const featuredProvinces: Province[] = [
     id: '2',
     name: 'Malanje',
     slug: 'malanje',
-    image: '/src/assets/provinces/malanje-quedas.webp',
+    image: '/assets/provinces/malanje-quedas.webp',
     description: {
       pt: 'Majestosas Quedas de Kalandula, segundas maiores cataratas de África',
       en: 'Majestic Kalandula Falls, second largest waterfalls in Africa'
@@ -76,7 +76,7 @@ export const featuredProvinces: Province[] = [
     id: '3',
     name: 'Luanda',
     slug: 'luanda',
-    image: '/src/assets/provinces/luanda.webp',
+    image: '/assets/provinces/luanda.webp',
     description: {
       pt: 'Capital cosmopolita com modernidade, história colonial e baía deslumbrante',
       en: 'Cosmopolitan capital with modernity, colonial history and stunning bay'
@@ -100,7 +100,7 @@ export const featuredProvinces: Province[] = [
     id: '4',
     name: 'Huíla',
     slug: 'huila',
-    image: '/src/assets/provinces/huila.webp',
+    image: '/assets/provinces/huila.webp',
     description: {
       pt: 'Serra da Leba com a icónica estrada sinuosa e clima ameno da montanha',
       en: 'Leba Mountain Range with iconic winding road and mild mountain climate'
@@ -124,7 +124,7 @@ export const featuredProvinces: Province[] = [
     id: '5',
     name: 'Benguela',
     slug: 'benguela',
-    image: '/src/assets/provinces/benguela.webp',
+    image: '/assets/provinces/benguela.webp',
     description: {
       pt: 'Praias paradisíacas do litoral atlântico e arquitetura colonial preservada',
       en: 'Paradisiacal beaches on the Atlantic coast and preserved colonial architecture'
@@ -148,7 +148,7 @@ export const featuredProvinces: Province[] = [
     id: '6',
     name: 'Uíge',
     slug: 'uige',
-    image: '/src/assets/provinces/uige-grutas-nzenzo.jpg',
+    image: '/assets/provinces/uige-grutas-nzenzo.jpg',
     description: {
       pt: 'Explore as místicas Grutas do Nzenzo, patrimônio natural do antigo reino Kongo',
       en: 'Explore the mystical Nzenzo Caves, natural heritage of the ancient Kongo kingdom'
@@ -172,7 +172,7 @@ export const featuredProvinces: Province[] = [
     id: '7',
     name: 'Cuanza Sul',
     slug: 'cuanza-sul',
-    image: '/src/assets/provinces/cuanza-sul.webp',
+    image: '/assets/provinces/cuanza-sul.webp',
     description: {
       pt: 'Reserva Natural do Kissama com safaris africanos e biodiversidade rica',
       en: 'Kissama Natural Reserve with African safaris and rich biodiversity'
@@ -196,7 +196,7 @@ export const featuredProvinces: Province[] = [
     id: '8',
     name: 'Namibe (Costa)',
     slug: 'namibe-costa',
-    image: '/src/assets/provinces/namibe-coast.webp',
+    image: '/assets/provinces/namibe-coast.webp',
     description: {
       pt: 'Costa selvagem atlântica com praias intocadas e pesca artesanal tradicional',
       en: 'Wild Atlantic coast with pristine beaches and traditional artisanal fishing'

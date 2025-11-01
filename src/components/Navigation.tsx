@@ -20,13 +20,12 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
   }, []);
 
   const navItems = language === "pt" 
-    ? ["Início", "Missão", "Descobrir", "Explorar", "Comparar", "Contato"]
-    : ["Home", "Mission", "Discover", "Explore", "Compare", "Contact"];
+    ? ["Início", "Descobrir", "Explorar", "Comparar", "Contato"]
+    : ["Home", "Discover", "Explore", "Compare", "Contact"];
 
   const navLinks = {
     pt: {
       "Início": "#",
-      "Missão": "#missao",
       "Descobrir": "#descobrir",
       "Explorar": "#explorar",
       "Comparar": "#comparar",
@@ -34,7 +33,6 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
     },
     en: {
       "Home": "#",
-      "Mission": "#missao",
       "Discover": "#descobrir",
       "Explore": "#explorar",
       "Compare": "#comparar",
