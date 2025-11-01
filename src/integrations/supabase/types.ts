@@ -14,16 +14,439 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          booking_date: string
+          cancellation_reason: string | null
+          commission_amount: number
+          commission_rate: number
+          company_id: string
+          created_at: string | null
+          currency: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          end_date: string | null
+          id: string
+          notes: string | null
+          payment_status: string
+          quantity: number
+          service_id: string
+          start_date: string
+          status: string
+          total_amount: number
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          booking_date: string
+          cancellation_reason?: string | null
+          commission_amount: number
+          commission_rate: number
+          company_id: string
+          created_at?: string | null
+          currency: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string
+          end_date?: string | null
+          id?: string
+          notes?: string | null
+          payment_status?: string
+          quantity?: number
+          service_id: string
+          start_date: string
+          status?: string
+          total_amount: number
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          booking_date?: string
+          cancellation_reason?: string | null
+          commission_amount?: number
+          commission_rate?: number
+          company_id?: string
+          created_at?: string | null
+          currency?: string
+          customer_email?: string
+          customer_name?: string
+          customer_phone?: string
+          end_date?: string | null
+          id?: string
+          notes?: string | null
+          payment_status?: string
+          quantity?: number
+          service_id?: string
+          start_date?: string
+          status?: string
+          total_amount?: number
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "partner_companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bookings_service_id_fkey"
+            columns: ["service_id"]
+            isOneToOne: false
+            referencedRelation: "partner_services"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      commission_payouts: {
+        Row: {
+          company_id: string
+          created_at: string | null
+          currency: string
+          id: string
+          paid_at: string | null
+          payment_method: string | null
+          period_end: string
+          period_start: string
+          status: string
+          total_bookings: number
+          total_commission: number
+          total_revenue: number
+          transaction_id: string | null
+        }
+        Insert: {
+          company_id: string
+          created_at?: string | null
+          currency?: string
+          id?: string
+          paid_at?: string | null
+          payment_method?: string | null
+          period_end: string
+          period_start: string
+          status?: string
+          total_bookings: number
+          total_commission: number
+          total_revenue: number
+          transaction_id?: string | null
+        }
+        Update: {
+          company_id?: string
+          created_at?: string | null
+          currency?: string
+          id?: string
+          paid_at?: string | null
+          payment_method?: string | null
+          period_end?: string
+          period_start?: string
+          status?: string
+          total_bookings?: number
+          total_commission?: number
+          total_revenue?: number
+          transaction_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "commission_payouts_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "partner_companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      partner_companies: {
+        Row: {
+          address: string
+          approved: boolean | null
+          average_rating: number | null
+          category: string
+          certified: boolean | null
+          cover_image_url: string | null
+          created_at: string | null
+          description_en: string
+          description_pt: string
+          email: string
+          heat_score: number | null
+          id: string
+          legal_name: string
+          logo_url: string | null
+          name: string
+          owner_id: string
+          phone: string
+          provinces: string[]
+          subscription_expires_at: string | null
+          subscription_plan_id: string
+          subscription_started_at: string | null
+          subscription_status: string
+          tax_id: string
+          total_bookings: number | null
+          total_reviews: number | null
+          updated_at: string | null
+          website: string | null
+        }
+        Insert: {
+          address: string
+          approved?: boolean | null
+          average_rating?: number | null
+          category: string
+          certified?: boolean | null
+          cover_image_url?: string | null
+          created_at?: string | null
+          description_en: string
+          description_pt: string
+          email: string
+          heat_score?: number | null
+          id?: string
+          legal_name: string
+          logo_url?: string | null
+          name: string
+          owner_id: string
+          phone: string
+          provinces: string[]
+          subscription_expires_at?: string | null
+          subscription_plan_id: string
+          subscription_started_at?: string | null
+          subscription_status?: string
+          tax_id: string
+          total_bookings?: number | null
+          total_reviews?: number | null
+          updated_at?: string | null
+          website?: string | null
+        }
+        Update: {
+          address?: string
+          approved?: boolean | null
+          average_rating?: number | null
+          category?: string
+          certified?: boolean | null
+          cover_image_url?: string | null
+          created_at?: string | null
+          description_en?: string
+          description_pt?: string
+          email?: string
+          heat_score?: number | null
+          id?: string
+          legal_name?: string
+          logo_url?: string | null
+          name?: string
+          owner_id?: string
+          phone?: string
+          provinces?: string[]
+          subscription_expires_at?: string | null
+          subscription_plan_id?: string
+          subscription_started_at?: string | null
+          subscription_status?: string
+          tax_id?: string
+          total_bookings?: number | null
+          total_reviews?: number | null
+          updated_at?: string | null
+          website?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "partner_companies_subscription_plan_id_fkey"
+            columns: ["subscription_plan_id"]
+            isOneToOne: false
+            referencedRelation: "subscription_plans"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      partner_services: {
+        Row: {
+          active: boolean | null
+          availability: string
+          cancellation_policy: string | null
+          company_id: string
+          created_at: string | null
+          currency: string
+          description_en: string
+          description_pt: string
+          discount_percentage: number | null
+          features: Json
+          id: string
+          images: string[] | null
+          name_en: string
+          name_pt: string
+          original_price: number | null
+          price: number
+          price_unit: string
+          response_time: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          active?: boolean | null
+          availability?: string
+          cancellation_policy?: string | null
+          company_id: string
+          created_at?: string | null
+          currency?: string
+          description_en: string
+          description_pt: string
+          discount_percentage?: number | null
+          features: Json
+          id?: string
+          images?: string[] | null
+          name_en: string
+          name_pt: string
+          original_price?: number | null
+          price: number
+          price_unit: string
+          response_time?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          active?: boolean | null
+          availability?: string
+          cancellation_policy?: string | null
+          company_id?: string
+          created_at?: string | null
+          currency?: string
+          description_en?: string
+          description_pt?: string
+          discount_percentage?: number | null
+          features?: Json
+          id?: string
+          images?: string[] | null
+          name_en?: string
+          name_pt?: string
+          original_price?: number | null
+          price?: number
+          price_unit?: string
+          response_time?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "partner_services_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "partner_companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string | null
+          email: string
+          full_name: string
+          id: string
+          phone: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          full_name: string
+          id: string
+          phone?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          full_name?: string
+          id?: string
+          phone?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      subscription_plans: {
+        Row: {
+          commission_rate: number
+          created_at: string | null
+          description_en: string
+          description_pt: string
+          display_name_en: string
+          display_name_pt: string
+          features: Json
+          id: string
+          marketing_campaigns: boolean | null
+          name: string
+          price_monthly_aoa: number
+          price_monthly_usd: number
+          support_24_7: boolean | null
+          visibility_multiplier: number
+        }
+        Insert: {
+          commission_rate: number
+          created_at?: string | null
+          description_en: string
+          description_pt: string
+          display_name_en: string
+          display_name_pt: string
+          features: Json
+          id?: string
+          marketing_campaigns?: boolean | null
+          name: string
+          price_monthly_aoa: number
+          price_monthly_usd: number
+          support_24_7?: boolean | null
+          visibility_multiplier?: number
+        }
+        Update: {
+          commission_rate?: number
+          created_at?: string | null
+          description_en?: string
+          description_pt?: string
+          display_name_en?: string
+          display_name_pt?: string
+          features?: Json
+          id?: string
+          marketing_campaigns?: boolean | null
+          name?: string
+          price_monthly_aoa?: number
+          price_monthly_usd?: number
+          support_24_7?: boolean | null
+          visibility_multiplier?: number
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          assigned_at: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          assigned_at?: string | null
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          assigned_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      calculate_company_heat_score: {
+        Args: { company_uuid: string }
+        Returns: number
+      }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "partner" | "admin" | "moderator"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +573,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["partner", "admin", "moderator"],
+    },
   },
 } as const

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 import malanjeImage from "@/assets/malanje.webp";
 
 interface HeroProps {
@@ -9,6 +10,7 @@ interface HeroProps {
 
 const Hero = ({ language }: HeroProps) => {
   const [scrollY, setScrollY] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -22,12 +24,14 @@ const Hero = ({ language }: HeroProps) => {
       subtitle: "A ponte que une cultura, confiança e tecnologia para revelar o futuro do turismo em Angola",
       cta1: "Explorar Serviços",
       cta2: "Conhecer Plataforma",
+      ctaPartner: "Seja um Parceiro",
     },
     en: {
       title: "Discover Angola",
       subtitle: "The bridge that unites culture, trust and technology to reveal the future of tourism in Angola",
       cta1: "Explore Services",
       cta2: "Learn More",
+      ctaPartner: "Become a Partner",
     },
   };
 
@@ -73,9 +77,10 @@ const Hero = ({ language }: HeroProps) => {
               size="lg"
               variant="outline"
               className="border-2 bg-background/50 backdrop-blur-sm hover:bg-background/80 gap-2"
+              onClick={() => navigate('/partner-register')}
             >
-              <Play className="h-5 w-5" />
-              {text.cta2}
+              <Building2 className="h-5 w-5" />
+              {text.ctaPartner}
             </Button>
           </div>
         </div>

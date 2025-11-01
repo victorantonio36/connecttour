@@ -18,6 +18,7 @@ const Footer = ({ language }: FooterProps) => {
         about: "Sobre Nós",
         destinations: "Destinos",
         partners: "Parceiros",
+        becomePartner: "Seja um Parceiro",
         terms: "Termos de Uso",
         privacy: "Privacidade",
       },
@@ -33,6 +34,7 @@ const Footer = ({ language }: FooterProps) => {
         about: "About Us",
         destinations: "Destinations",
         partners: "Partners",
+        becomePartner: "Become a Partner",
         terms: "Terms of Use",
         privacy: "Privacy",
       },
@@ -86,6 +88,11 @@ const Footer = ({ language }: FooterProps) => {
               <li>
                 <a href="#parceiros" className="text-muted-foreground hover:text-primary transition-colors">
                   {text.links.partners}
+                </a>
+              </li>
+              <li>
+                <a href="/partner-register" className="text-accent hover:text-accent/80 transition-colors font-medium">
+                  {text.links.becomePartner}
                 </a>
               </li>
             </ul>

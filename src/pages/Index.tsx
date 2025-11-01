@@ -5,6 +5,7 @@ import Mission from "@/components/Mission";
 import DiscoverAngola from "@/components/DiscoverAngola";
 import ExploreServices from "@/components/ExploreServices";
 import PriceComparison from "@/components/PriceComparison";
+import MarketingTeam from "@/components/MarketingTeam";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -19,6 +20,7 @@ const Index = () => {
         <DiscoverAngola language={language} />
         <ExploreServices language={language} />
         <PriceComparison language={language} />
+        <MarketingTeam language={language} />
       </main>
       <Footer language={language} />
     </div>
