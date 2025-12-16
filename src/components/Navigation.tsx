@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Globe } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Menu, X, Globe, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAdmin } from "@/hooks/useAdmin";
 
 interface NavigationProps {
   language: "pt" | "en";
@@ -10,6 +12,7 @@ interface NavigationProps {
 const Navigation = ({ language, setLanguage }: NavigationProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isAdmin, isLoading } = useAdmin();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,6 +75,15 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
                 {item}
               </a>
             ))}
+            {!isLoading && isAdmin && (
+              <Link
+                to="/admin"
+                className="flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+              >
+                <Shield className="h-4 w-4" />
+                {language === "pt" ? "Painel Admin" : "Admin Panel"}
+              </Link>
+            )}
           </div>
 
           <div className="flex items-center gap-4">
@@ -108,6 +120,16 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
                 {item}
               </a>
             ))}
+            {!isLoading && isAdmin && (
+              <Link
+                to="/admin"
+                className="flex items-center gap-2 py-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Shield className="h-4 w-4" />
+                {language === "pt" ? "Painel Admin" : "Admin Panel"}
+              </Link>
+            )}
           </div>
         )}
       </div>
