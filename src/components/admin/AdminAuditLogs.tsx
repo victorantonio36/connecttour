@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
 import { Search, RefreshCw, FileText, Eye } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Json } from '@/integrations/supabase/types';
 
 interface AuditLog {
   id: string;
@@ -15,10 +16,10 @@ interface AuditLog {
   action: string;
   entity_type: string;
   entity_id: string | null;
-  old_data: Record<string, unknown> | null;
-  new_data: Record<string, unknown> | null;
+  old_data: Json | null;
+  new_data: Json | null;
   description: string | null;
-  created_at: string;
+  created_at: string | null;
 }
 
 const AdminAuditLogs = () => {

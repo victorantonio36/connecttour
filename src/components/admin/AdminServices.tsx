@@ -112,7 +112,7 @@ const AdminServices = () => {
 
       if (error) throw error;
 
-      await logAdminAction('update', 'partner_service', service.id, { active: service.active }, { active: !service.active }, `${service.active ? 'Desativado' : 'Ativado'}: ${service.name_pt}`);
+      await logAdminAction('update', 'partner_service', service.id, { active: service.active } as Record<string, unknown>, { active: !service.active } as Record<string, unknown>, `${service.active ? 'Desativado' : 'Ativado'}: ${service.name_pt}`);
       toast({ title: 'Sucesso', description: `Serviço ${service.active ? 'desativado' : 'ativado'}.` });
       fetchServices();
     } catch (error) {
@@ -131,7 +131,7 @@ const AdminServices = () => {
 
       if (error) throw error;
 
-      await logAdminAction('delete', 'partner_service', service.id, service, null, `Excluído: ${service.name_pt}`);
+      await logAdminAction('delete', 'partner_service', service.id, service as unknown as Record<string, unknown>, null, `Excluído: ${service.name_pt}`);
       toast({ title: 'Sucesso', description: 'Serviço excluído.' });
       fetchServices();
     } catch (error) {
@@ -163,7 +163,7 @@ const AdminServices = () => {
 
       if (error) throw error;
 
-      await logAdminAction('update', 'partner_service', editingService.id, null, editingService, `Editado: ${editingService.name_pt}`);
+      await logAdminAction('update', 'partner_service', editingService.id, null, editingService as unknown as Record<string, unknown>, `Editado: ${editingService.name_pt}`);
       toast({ title: 'Sucesso', description: 'Serviço atualizado.' });
       setIsEditDialogOpen(false);
       fetchServices();

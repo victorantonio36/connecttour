@@ -9,6 +9,9 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAdmin } from '@/hooks/useAdmin';
 import { useToast } from '@/hooks/use-toast';
 import { Search, Shield, ShieldOff, UserCog } from 'lucide-react';
+import { Database } from '@/integrations/supabase/types';
+
+type AppRole = Database['public']['Enums']['app_role'];
 
 interface UserProfile {
   id: string;
@@ -80,11 +83,11 @@ const AdminUsers = () => {
     setFilteredUsers(filtered);
   }, [searchTerm, roleFilter, users]);
 
-  const handleAssignRole = async (userId: string, role: string, userName: string) => {
+  const handleAssignRole = async (userId: string, role: AppRole, userName: string) => {
     try {
       const { error } = await supabase
         .from('user_roles')
-        .insert({ user_id: userId, role });
+        .insert({ user_id: userId, role: role });
 
       if (error) throw error;
 
@@ -100,7 +103,7 @@ const AdminUsers = () => {
     }
   };
 
-  const handleRevokeRole = async (userId: string, role: string, userName: string) => {
+  const handleRevokeRole = async (userId: string, role: AppRole, userName: string) => {
     try {
       const { error } = await supabase
         .from('user_roles')
