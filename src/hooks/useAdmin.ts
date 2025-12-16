@@ -62,8 +62,8 @@ export const useAdmin = () => {
       action,
       entity_type: entityType,
       entity_id: entityId,
-      old_data: oldData,
-      new_data: newData,
+      old_data: oldData as unknown as undefined,
+      new_data: newData as unknown as undefined,
       description
     }]);
   };

@@ -93,7 +93,7 @@ const AdminPartners = () => {
 
       if (error) throw error;
 
-      await logAdminAction('approve', 'partner_company', partner.id, { approved: false }, { approved: true }, `Aprovado: ${partner.name}`);
+      await logAdminAction('approve', 'partner_company', partner.id, { approved: false } as Record<string, unknown>, { approved: true } as Record<string, unknown>, `Aprovado: ${partner.name}`);
       toast({ title: 'Sucesso', description: 'Parceiro aprovado.' });
       fetchPartners();
     } catch (error) {
@@ -111,7 +111,7 @@ const AdminPartners = () => {
 
       if (error) throw error;
 
-      await logAdminAction('update', 'partner_company', partner.id, { certified: partner.certified }, { certified: newCertified }, `Certificação ${newCertified ? 'concedida' : 'removida'}: ${partner.name}`);
+      await logAdminAction('update', 'partner_company', partner.id, { certified: partner.certified } as Record<string, unknown>, { certified: newCertified } as Record<string, unknown>, `Certificação ${newCertified ? 'concedida' : 'removida'}: ${partner.name}`);
       toast({ title: 'Sucesso', description: `Certificação ${newCertified ? 'concedida' : 'removida'}.` });
       fetchPartners();
     } catch (error) {
@@ -130,7 +130,7 @@ const AdminPartners = () => {
 
       if (error) throw error;
 
-      await logAdminAction('delete', 'partner_company', partner.id, partner, null, `Excluído: ${partner.name}`);
+      await logAdminAction('delete', 'partner_company', partner.id, partner as unknown as Record<string, unknown>, null, `Excluído: ${partner.name}`);
       toast({ title: 'Sucesso', description: 'Parceiro excluído.' });
       fetchPartners();
     } catch (error) {
@@ -160,7 +160,7 @@ const AdminPartners = () => {
 
       if (error) throw error;
 
-      await logAdminAction('update', 'partner_company', editingPartner.id, null, editingPartner, `Editado: ${editingPartner.name}`);
+      await logAdminAction('update', 'partner_company', editingPartner.id, null, editingPartner as unknown as Record<string, unknown>, `Editado: ${editingPartner.name}`);
       toast({ title: 'Sucesso', description: 'Parceiro atualizado.' });
       setIsEditDialogOpen(false);
       fetchPartners();
