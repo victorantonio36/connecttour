@@ -58,7 +58,7 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
             <img 
               src={angolaLogo} 
               alt="Angola ConnecTour" 
-              className="h-10 w-auto object-contain"
+              className="h-14 sm:h-16 w-auto object-contain drop-shadow-md"
             />
           </div>
 
