@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Angola ConnecTour Premium Color System */
+    /* Angola ConnecTour Official Color System */
     --background: 0 0% 100%;
     --foreground: 20 15% 15%;
 
@@ -18,18 +18,23 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 20 15% 15%;
 
-    /* Primary: Deep Ocean Blue */
-    --primary: 210 85% 25%;
+    /* Primary: Deep Teal (Verde Azul Profundo) #2F7778 */
+    --primary: 181 43% 33%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 210 85% 45%;
+    --primary-glow: 181 43% 45%;
 
-    /* Secondary: Warm Terracotta */
-    --secondary: 15 70% 55%;
-    --secondary-foreground: 0 0% 100%;
+    /* Secondary: Turquoise (Azul Turquesa Claro) #7ACED3 */
+    --secondary: 184 56% 64%;
+    --secondary-foreground: 181 43% 20%;
 
-    /* Accent: Golden Sand */
-    --accent: 45 85% 65%;
+    /* Accent: Golden Beige (Bege Dourado Suave) #E3CEAA */
+    --accent: 38 49% 78%;
     --accent-foreground: 20 15% 15%;
+
+    /* ConnecTour Brand Colors */
+    --connectour-turquoise: 184 56% 64%;
+    --connectour-deep: 181 43% 33%;
+    --connectour-golden: 38 49% 78%;
 
     /* Emerald: Lush Nature */
     --emerald: 155 65% 45%;
@@ -43,24 +48,28 @@ All colors MUST be HSL.
 
     --border: 30 10% 85%;
     --input: 30 10% 90%;
-    --ring: 210 85% 25%;
+    --ring: 181 43% 33%;
 
     --radius: 0.75rem;
 
-    /* Premium Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(210 85% 25%), hsl(210 85% 35%));
-    --gradient-warm: linear-gradient(135deg, hsl(15 70% 55%), hsl(45 85% 65%));
-    --gradient-nature: linear-gradient(135deg, hsl(155 65% 45%), hsl(45 85% 65%));
+    /* Premium Gradients - Angola ConnecTour */
+    --gradient-hero: linear-gradient(135deg, hsl(181 43% 33%), hsl(184 56% 64%));
+    --gradient-warm: linear-gradient(135deg, hsl(38 49% 78%), hsl(181 43% 33%));
+    --gradient-nature: linear-gradient(135deg, hsl(184 56% 64%), hsl(38 49% 78%));
     --gradient-overlay: linear-gradient(180deg, transparent, hsl(20 15% 15% / 0.7));
+    --gradient-connectour: linear-gradient(135deg, hsl(181 43% 33%), hsl(184 56% 64%), hsl(38 49% 78%));
 
     /* Shadows */
     --shadow-soft: 0 4px 20px hsl(20 15% 15% / 0.08);
     --shadow-medium: 0 8px 30px hsl(20 15% 15% / 0.12);
     --shadow-strong: 0 16px 48px hsl(20 15% 15% / 0.16);
+    --shadow-glow-turquoise: 0 0 40px hsl(184 56% 64% / 0.4);
+    --shadow-glow-golden: 0 0 40px hsl(38 49% 78% / 0.4);
 
     /* Transitions */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition-premium: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -82,15 +91,19 @@ All colors MUST be HSL.
     --popover: 20 15% 10%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 210 85% 45%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 210 85% 55%;
+    --primary: 184 56% 64%;
+    --primary-foreground: 181 43% 15%;
+    --primary-glow: 184 56% 70%;
 
-    --secondary: 15 70% 50%;
+    --secondary: 181 43% 40%;
     --secondary-foreground: 0 0% 100%;
 
-    --accent: 45 85% 60%;
+    --accent: 38 49% 70%;
     --accent-foreground: 20 15% 10%;
+
+    --connectour-turquoise: 184 56% 64%;
+    --connectour-deep: 181 43% 40%;
+    --connectour-golden: 38 49% 70%;
 
     --emerald: 155 65% 50%;
     --emerald-foreground: 0 0% 100%;
@@ -103,12 +116,13 @@ All colors MUST be HSL.
 
     --border: 20 10% 20%;
     --input: 20 10% 18%;
-    --ring: 210 85% 45%;
+    --ring: 184 56% 64%;
 
-    --gradient-hero: linear-gradient(135deg, hsl(210 85% 35%), hsl(210 85% 45%));
-    --gradient-warm: linear-gradient(135deg, hsl(15 70% 45%), hsl(45 85% 55%));
-    --gradient-nature: linear-gradient(135deg, hsl(155 65% 40%), hsl(45 85% 55%));
+    --gradient-hero: linear-gradient(135deg, hsl(181 43% 25%), hsl(184 56% 50%));
+    --gradient-warm: linear-gradient(135deg, hsl(38 49% 65%), hsl(181 43% 30%));
+    --gradient-nature: linear-gradient(135deg, hsl(184 56% 50%), hsl(38 49% 65%));
     --gradient-overlay: linear-gradient(180deg, transparent, hsl(0 0% 0% / 0.8));
+    --gradient-connectour: linear-gradient(135deg, hsl(181 43% 30%), hsl(184 56% 50%), hsl(38 49% 65%));
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -155,6 +169,10 @@ All colors MUST be HSL.
   .gradient-nature {
     background: var(--gradient-nature);
   }
+
+  .gradient-connectour {
+    background: var(--gradient-connectour);
+  }
   
   .shadow-soft {
     box-shadow: var(--shadow-soft);
@@ -166,5 +184,66 @@ All colors MUST be HSL.
   
   .shadow-strong {
     box-shadow: var(--shadow-strong);
+  }
+
+  .shadow-glow-turquoise {
+    box-shadow: var(--shadow-glow-turquoise);
+  }
+
+  .shadow-glow-golden {
+    box-shadow: var(--shadow-glow-golden);
+  }
+
+  /* Angola ConnecTour brand utilities */
+  .bg-connectour-turquoise {
+    background-color: hsl(var(--connectour-turquoise));
+  }
+
+  .bg-connectour-deep {
+    background-color: hsl(var(--connectour-deep));
+  }
+
+  .bg-connectour-golden {
+    background-color: hsl(var(--connectour-golden));
+  }
+
+  .text-connectour-turquoise {
+    color: hsl(var(--connectour-turquoise));
+  }
+
+  .text-connectour-deep {
+    color: hsl(var(--connectour-deep));
+  }
+
+  .text-connectour-golden {
+    color: hsl(var(--connectour-golden));
+  }
+
+  .border-connectour-turquoise {
+    border-color: hsl(var(--connectour-turquoise));
+  }
+
+  .border-connectour-deep {
+    border-color: hsl(var(--connectour-deep));
+  }
+
+  .border-connectour-golden {
+    border-color: hsl(var(--connectour-golden));
+  }
+
+  /* GPU-accelerated animations */
+  .animated-bg {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  /* Premium hover effects */
+  .hover-glow-golden:hover {
+    box-shadow: 0 8px 30px hsl(38 49% 78% / 0.4);
+  }
+
+  .hover-glow-turquoise:hover {
+    box-shadow: 0 8px 30px hsl(184 56% 64% / 0.4);
   }
 }
