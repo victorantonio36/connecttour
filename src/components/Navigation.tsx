@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X, Globe, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAdmin } from "@/hooks/useAdmin";
+import angolaLogo from "@/assets/angola-connectour-logo.png";
 
 interface NavigationProps {
   language: "pt" | "en";
@@ -53,16 +54,12 @@ const Navigation = ({ language, setLanguage }: NavigationProps) => {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg gradient-hero flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">AC</span>
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-foreground">Angola ConnecTour</h1>
-              <p className="text-xs text-muted-foreground hidden sm:block">
-                {language === "pt" ? "Plataforma Nacional de Turismo" : "National Tourism Platform"}
-              </p>
-            </div>
+          <div className="flex items-center gap-2">
+            <img 
+              src={angolaLogo} 
+              alt="Angola ConnecTour" 
+              className="h-10 w-auto object-contain"
+            />
           </div>
 
           <div className="hidden md:flex items-center gap-8">
