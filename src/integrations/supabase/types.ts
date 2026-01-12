@@ -193,6 +193,39 @@ export type Database = {
           },
         ]
       }
+      exploration_events: {
+        Row: {
+          category: string
+          created_at: string | null
+          destination: string | null
+          event_type: string
+          id: string
+          metadata: Json | null
+          province: string | null
+          user_id: string | null
+        }
+        Insert: {
+          category: string
+          created_at?: string | null
+          destination?: string | null
+          event_type?: string
+          id?: string
+          metadata?: Json | null
+          province?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          category?: string
+          created_at?: string | null
+          destination?: string | null
+          event_type?: string
+          id?: string
+          metadata?: Json | null
+          province?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       partner_companies: {
         Row: {
           address: string
@@ -364,6 +397,30 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      platform_settings: {
+        Row: {
+          id: string
+          key: string
+          updated_at: string | null
+          updated_by: string | null
+          value: Json
+        }
+        Insert: {
+          id?: string
+          key: string
+          updated_at?: string | null
+          updated_by?: string | null
+          value: Json
+        }
+        Update: {
+          id?: string
+          key?: string
+          updated_at?: string | null
+          updated_by?: string | null
+          value?: Json
+        }
+        Relationships: []
       }
       profiles: {
         Row: {
