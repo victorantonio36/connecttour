@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import Mission from "@/components/Mission";
 import DiscoverAngola from "@/components/DiscoverAngola";
 import ExploreServices from "@/components/ExploreServices";
-import PriceComparison from "@/components/PriceComparison";
+import SmartComparisonSection from "@/components/comparison/SmartComparisonSection";
 import MarketingTeam from "@/components/MarketingTeam";
 import Footer from "@/components/Footer";
 
@@ -19,7 +19,7 @@ const Index = () => {
         <Mission language={language} />
         <DiscoverAngola language={language} />
         <ExploreServices language={language} />
-        <PriceComparison language={language} />
+        <SmartComparisonSection language={language} />
         <MarketingTeam language={language} />
       </main>
       <Footer language={language} />

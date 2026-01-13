@@ -109,6 +109,14 @@ export default {
           "0%, 100%": { opacity: "1", transform: "scale(1)" },
           "50%": { opacity: "0.8", transform: "scale(1.05)" },
         },
+        "card-enter": {
+          "0%": { opacity: "0", transform: "translateY(20px) scale(0.98)" },
+          "100%": { opacity: "1", transform: "translateY(0) scale(1)" },
+        },
+        "shimmer": {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -121,6 +129,8 @@ export default {
         "slide-in-bottom": "slide-in-bottom 0.6s ease-out",
         "parallax": "parallax 20s ease-in-out infinite alternate",
         "heat-pulse": "heat-pulse 2s ease-in-out infinite",
+        "card-enter": "card-enter 0.4s ease-out forwards",
+        "shimmer": "shimmer 2s linear infinite",
       },
     },
   },
