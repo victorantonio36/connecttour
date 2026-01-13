@@ -39,6 +39,7 @@ export interface Partner {
   availability: 'high' | 'medium' | 'low';
   responseTime?: string;
   cancellationPolicy?: 'flexible' | 'moderate' | 'strict';
+  link?: string; // External partner website URL
 }
 
 export const mockPartners: Partner[] = [
@@ -61,7 +62,8 @@ export const mockPartners: Partner[] = [
     features: ['Guia Especializado', 'Transporte Incluído', 'Refeições', 'Seguro Viagem'],
     availability: 'high',
     responseTime: '< 2 horas',
-    cancellationPolicy: 'flexible'
+    cancellationPolicy: 'flexible',
+    link: 'https://angolaexperience.ao'
   },
   {
     id: "2",
