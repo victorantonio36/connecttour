@@ -1,12 +1,13 @@
 import { useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
+import type { Json } from '@/integrations/supabase/types';
 
 interface ExplorationEvent {
   category: string;
   province?: string;
   destination?: string;
   eventType?: string;
-  metadata?: Record<string, unknown>;
+  metadata?: Record<string, string | number | boolean | null>;
 }
 
 export const useExplorationTracking = () => {
@@ -24,7 +25,7 @@ export const useExplorationTracking = () => {
           province: event.province || null,
           destination: event.destination || null,
           event_type: event.eventType || 'explore_click',
-          metadata: event.metadata || {}
+          metadata: (event.metadata || {}) as Json
         }]);
 
       if (error) {

@@ -5,12 +5,38 @@ import { Button } from '@/components/ui/button';
 import { MapPin, Star, Users, ArrowRight } from 'lucide-react';
 import { featuredProvinces } from '@/data/provincesData';
 import HeatIndicator from './HeatIndicator';
+import { useNavigate } from 'react-router-dom';
+import { useExplorationTracking } from '@/hooks/useExplorationTracking';
 
 interface DiscoverAngolaProps {
   language: 'pt' | 'en';
 }
 
 const DiscoverAngola = ({ language }: DiscoverAngolaProps) => {
+  const navigate = useNavigate();
+  const { trackExploration } = useExplorationTracking();
+
+  const handleExplore = (province: typeof featuredProvinces[0]) => {
+    trackExploration({
+      category: 'province_explore',
+      province: province.name,
+      eventType: 'explore_click'
+    });
+    
+    const categoryMap: Record<string, string> = {
+      'Luanda': '/explorar/agencias',
+      'Benguela': '/explorar/hospedagem',
+      'Huíla': '/explorar/experiencias',
+      'Namibe': '/explorar/transporte',
+      'Malanje': '/explorar/experiencias',
+      'Uíge': '/explorar/experiencias',
+      'Cuanza Sul': '/explorar/hospedagem'
+    };
+    
+    const route = categoryMap[province.name] || '/explorar/agencias';
+    navigate(route);
+  };
+
   const content = {
     pt: {
       title: 'Descubra Angola',
@@ -113,6 +139,7 @@ const DiscoverAngola = ({ language }: DiscoverAngolaProps) => {
                       <Button 
                         variant="ghost" 
                         className="w-full text-accent hover:text-accent/80 group-hover:translate-x-1 transition-transform"
+                        onClick={() => handleExplore(province)}
                       >
                         {text.explore} <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>

@@ -6,6 +6,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { provinces, mockPartners } from "@/data/servicesData";
+import { useNavigate } from "react-router-dom";
+import { useExplorationTracking } from "@/hooks/useExplorationTracking";
 
 interface ExploreServicesProps {
   language: "pt" | "en";
@@ -21,10 +23,31 @@ interface ServiceCategory {
 }
 
 const ExploreServices = ({ language }: ExploreServicesProps) => {
+  const navigate = useNavigate();
+  const { trackExploration } = useExplorationTracking();
+  
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedProvince, setSelectedProvince] = useState<string>("Todas as Províncias");
   const [showCertifiedOnly, setShowCertifiedOnly] = useState(false);
+
+  const handleViewPartners = (categoryId: string) => {
+    trackExploration({
+      category: categoryId,
+      eventType: 'view_partners_click'
+    });
+    
+    const routeMap: Record<string, string> = {
+      'tourism': '/explorar/agencias',
+      'hotels': '/explorar/hospedagem',
+      'culture': '/explorar/experiencias',
+      'transport': '/explorar/transporte',
+      'guides': '/explorar/agencias'
+    };
+    
+    const route = routeMap[categoryId] || '/explorar/agencias';
+    navigate(route);
+  };
 
   const content = {
     pt: {
@@ -324,6 +347,7 @@ const ExploreServices = ({ language }: ExploreServicesProps) => {
                     <Button
                       variant="ghost"
                       className="text-accent hover:text-accent/80 p-0 h-auto font-semibold group/btn w-full justify-start"
+                      onClick={() => handleViewPartners(category.id)}
                     >
                       {text.viewPartners}
                       <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
