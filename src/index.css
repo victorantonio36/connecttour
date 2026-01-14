@@ -246,4 +246,22 @@ All colors MUST be HSL.
   .hover-glow-turquoise:hover {
     box-shadow: 0 8px 30px hsl(184 56% 64% / 0.4);
   }
+
+  /* GPU-accelerated class for performance */
+  .gpu-accelerated {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in,
+    .animate-scale-in,
+    .animate-fade-in-up {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
 }
