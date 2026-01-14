@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAdmin } from '@/hooks/useAdmin';
+import { useInactivityLogout } from '@/hooks/useInactivityLogout';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   LayoutDashboard, 
@@ -10,7 +11,8 @@ import {
   Calendar, 
   Image, 
   FileText,
-  LogOut
+  LogOut,
+  Phone
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
@@ -22,12 +24,16 @@ import AdminUsers from '@/components/admin/AdminUsers';
 import AdminBookings from '@/components/admin/AdminBookings';
 import AdminMedia from '@/components/admin/AdminMedia';
 import AdminAuditLogs from '@/components/admin/AdminAuditLogs';
+import AdminContacts from '@/components/admin/AdminContacts';
 
 const Admin = () => {
   const { isAdmin, isLoading, user } = useAdmin();
   const navigate = useNavigate();
   const { toast } = useToast();
   const [activeTab, setActiveTab] = useState('dashboard');
+
+  // Enable inactivity logout (15 minutes)
+  useInactivityLogout({ enabled: isAdmin });
 
   useEffect(() => {
     if (!isLoading && !isAdmin) {
@@ -55,21 +61,26 @@ const Admin = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="bg-card border-b border-border sticky top-0 z-50">
+      {/* Header with brand colors */}
+      <header className="bg-primary border-b border-primary/20 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">A</span>
+            <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
+              <span className="text-primary font-bold text-lg">A</span>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-foreground">Painel Administrativo</h1>
-              <p className="text-sm text-muted-foreground">Angola ConnecTour</p>
+              <h1 className="text-xl font-bold text-primary-foreground">Painel Administrativo</h1>
+              <p className="text-sm text-primary-foreground/70">Angola ConnecTour</p>
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-sm text-muted-foreground">{user?.email}</span>
-            <Button variant="outline" size="sm" onClick={handleLogout}>
+            <span className="text-sm text-primary-foreground/80">{user?.email}</span>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={handleLogout}
+              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+            >
               <LogOut className="h-4 w-4 mr-2" />
               Sair
             </Button>
@@ -80,7 +91,7 @@ const Admin = () => {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-6">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid grid-cols-7 w-full max-w-4xl mx-auto">
+          <TabsList className="grid grid-cols-8 w-full max-w-5xl mx-auto">
             <TabsTrigger value="dashboard" className="flex items-center gap-2">
               <LayoutDashboard className="h-4 w-4" />
               <span className="hidden sm:inline">Dashboard</span>
@@ -105,6 +116,10 @@ const Admin = () => {
               <Image className="h-4 w-4" />
               <span className="hidden sm:inline">Mídia</span>
             </TabsTrigger>
+            <TabsTrigger value="contacts" className="flex items-center gap-2">
+              <Phone className="h-4 w-4" />
+              <span className="hidden sm:inline">Contatos</span>
+            </TabsTrigger>
             <TabsTrigger value="logs" className="flex items-center gap-2">
               <FileText className="h-4 w-4" />
               <span className="hidden sm:inline">Logs</span>
@@ -128,6 +143,9 @@ const Admin = () => {
           </TabsContent>
           <TabsContent value="media">
             <AdminMedia />
+          </TabsContent>
+          <TabsContent value="contacts">
+            <AdminContacts />
           </TabsContent>
           <TabsContent value="logs">
             <AdminAuditLogs />
