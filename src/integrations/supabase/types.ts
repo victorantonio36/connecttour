@@ -129,6 +129,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "bookings_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "partner_companies_public"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "bookings_service_id_fkey"
             columns: ["service_id"]
             isOneToOne: false
@@ -189,6 +196,13 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "partner_companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "commission_payouts_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "partner_companies_public"
             referencedColumns: ["id"]
           },
         ]
@@ -396,6 +410,13 @@ export type Database = {
             referencedRelation: "partner_companies"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "partner_services_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "partner_companies_public"
+            referencedColumns: ["id"]
+          },
         ]
       }
       platform_settings: {
@@ -523,12 +544,184 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      bookings_partner_view: {
+        Row: {
+          booking_date: string | null
+          commission_amount: number | null
+          commission_rate: number | null
+          company_id: string | null
+          created_at: string | null
+          currency: string | null
+          customer_email_masked: string | null
+          customer_name_masked: string | null
+          customer_phone_masked: string | null
+          end_date: string | null
+          id: string | null
+          notes: string | null
+          payment_status: string | null
+          quantity: number | null
+          service_id: string | null
+          start_date: string | null
+          status: string | null
+          total_amount: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          booking_date?: string | null
+          commission_amount?: number | null
+          commission_rate?: number | null
+          company_id?: string | null
+          created_at?: string | null
+          currency?: string | null
+          customer_email_masked?: never
+          customer_name_masked?: never
+          customer_phone_masked?: never
+          end_date?: string | null
+          id?: string | null
+          notes?: string | null
+          payment_status?: string | null
+          quantity?: number | null
+          service_id?: string | null
+          start_date?: string | null
+          status?: string | null
+          total_amount?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          booking_date?: string | null
+          commission_amount?: number | null
+          commission_rate?: number | null
+          company_id?: string | null
+          created_at?: string | null
+          currency?: string | null
+          customer_email_masked?: never
+          customer_name_masked?: never
+          customer_phone_masked?: never
+          end_date?: string | null
+          id?: string | null
+          notes?: string | null
+          payment_status?: string | null
+          quantity?: number | null
+          service_id?: string | null
+          start_date?: string | null
+          status?: string | null
+          total_amount?: number | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "partner_companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bookings_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "partner_companies_public"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bookings_service_id_fkey"
+            columns: ["service_id"]
+            isOneToOne: false
+            referencedRelation: "partner_services"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      partner_companies_public: {
+        Row: {
+          address: string | null
+          approved: boolean | null
+          average_rating: number | null
+          category: string | null
+          certified: boolean | null
+          cover_image_url: string | null
+          description_en: string | null
+          description_pt: string | null
+          email: string | null
+          heat_score: number | null
+          id: string | null
+          logo_url: string | null
+          name: string | null
+          phone: string | null
+          provinces: string[] | null
+          subscription_status: string | null
+          total_bookings: number | null
+          total_reviews: number | null
+          website: string | null
+        }
+        Insert: {
+          address?: string | null
+          approved?: boolean | null
+          average_rating?: number | null
+          category?: string | null
+          certified?: boolean | null
+          cover_image_url?: string | null
+          description_en?: string | null
+          description_pt?: string | null
+          email?: string | null
+          heat_score?: number | null
+          id?: string | null
+          logo_url?: string | null
+          name?: string | null
+          phone?: string | null
+          provinces?: string[] | null
+          subscription_status?: string | null
+          total_bookings?: number | null
+          total_reviews?: number | null
+          website?: string | null
+        }
+        Update: {
+          address?: string | null
+          approved?: boolean | null
+          average_rating?: number | null
+          category?: string | null
+          certified?: boolean | null
+          cover_image_url?: string | null
+          description_en?: string | null
+          description_pt?: string | null
+          email?: string | null
+          heat_score?: number | null
+          id?: string | null
+          logo_url?: string | null
+          name?: string | null
+          phone?: string | null
+          provinces?: string[] | null
+          subscription_status?: string | null
+          total_bookings?: number | null
+          total_reviews?: number | null
+          website?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       calculate_company_heat_score: {
         Args: { company_uuid: string }
         Returns: number
+      }
+      get_partner_bookings: {
+        Args: { p_company_id: string }
+        Returns: {
+          booking_date: string
+          commission_amount: number
+          created_at: string
+          currency: string
+          customer_name_masked: string
+          end_date: string
+          id: string
+          notes: string
+          payment_status: string
+          quantity: number
+          service_id: string
+          start_date: string
+          status: string
+          total_amount: number
+        }[]
       }
       has_role: {
         Args: {
