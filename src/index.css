@@ -157,6 +157,24 @@ All colors MUST be HSL.
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Prevenir tradução automática em elementos críticos */
+  .notranslate,
+  [translate="no"] {
+    -webkit-translate: none;
+    translate: none;
+  }
+
+  /* Elementos que nunca devem ser traduzidos */
+  button,
+  input,
+  select,
+  textarea,
+  [data-value],
+  [data-state],
+  .no-translate {
+    translate: none;
+  }
   
   .gradient-hero {
     background: var(--gradient-hero);
