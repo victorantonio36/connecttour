@@ -96,7 +96,7 @@ const SubscriptionPlans = ({ language, selectedPlan, onSelectPlan }: Subscriptio
 
   const text = content[language];
   const plans = [
-    { id: 'essential', ...text.plans.essential, popular: false },
+    { id: 'essencial', ...text.plans.essential, popular: false },  // Matches DB 'essencial'
     { id: 'elite', ...text.plans.elite, popular: true }
   ];
 
