@@ -1,5 +1,6 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import angolaLogo from "@/assets/angola-connectour-logo.png";
 
 interface FooterProps {
   language: "pt" | "en";
@@ -65,9 +66,11 @@ const Footer = ({ language }: FooterProps) => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl gradient-hero flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">AC</span>
-              </div>
+              <img 
+                src={angolaLogo} 
+                alt="Angola ConnecTour" 
+                className="h-12 w-auto object-contain"
+              />
               <div>
                 <h3 className="text-2xl font-bold text-foreground">Angola ConnecTour</h3>
                 <p className="text-sm text-muted-foreground">{text.slogan}</p>

@@ -7,6 +7,7 @@ import ExploreServices from "@/components/ExploreServices";
 import SmartComparisonSection from "@/components/comparison/SmartComparisonSection";
 import MarketingTeam from "@/components/MarketingTeam";
 import Footer from "@/components/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 const Index = () => {
   const [language, setLanguage] = useState<"pt" | "en">("pt");
@@ -23,6 +24,7 @@ const Index = () => {
         <MarketingTeam language={language} />
       </main>
       <Footer language={language} />
+      <FloatingWhatsApp language={language} />
     </div>
   );
 };
