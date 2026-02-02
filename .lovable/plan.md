@@ -1,76 +1,83 @@
 
+## Plano: Botao WhatsApp Flutuante e Substituicao do Simbolo AC
 
-## Plano: Corrigir Bug da Tela Branca no Cadastro de Parceiros
+### Alteracoes Necessarias
 
-### Problema Identificado
+#### 1. Criar Componente FloatingWhatsApp
 
-O erro encontrado nos logs do console:
+**Novo arquivo: `src/components/FloatingWhatsApp.tsx`**
+
+Botao flutuante com as seguintes caracteristicas:
+- Posicao fixa no canto inferior direito
+- Animacao de pulso para atrair atencao
+- Aparece apos scroll (para nao cobrir conteudo hero)
+- Design profissional com icone oficial do WhatsApp
+- Tooltip ao hover
+- Responsivo (menor em mobile)
+
+```text
++-------------------+
+|                   |
+|                   |
+|                   |
+|                   |
+|            [WA] <-+-- Botao flutuante
++-------------------+
+    Posicao: bottom-6 right-6
 ```
-Error: useBlocker must be used within a data router. 
-See https://reactrouter.com/v6/routers/picking-a-router.
+
+#### 2. Substituir Simbolo AC no Footer
+
+**Arquivo: `src/components/Footer.tsx`**
+
+Substituir o bloco:
+```typescript
+<div className="w-12 h-12 rounded-xl gradient-hero flex items-center justify-center">
+  <span className="text-primary-foreground font-bold text-xl">AC</span>
+</div>
 ```
 
-**Causa**: O hook `useBlocker` foi adicionado ao `PartnerRegister.tsx` na implementacao anterior, mas este hook so funciona com "data routers" (`createBrowserRouter`). O projeto usa `BrowserRouter`, que nao suporta este hook.
+Por:
+```typescript
+<img 
+  src={angolaLogo} 
+  alt="Angola ConnecTour" 
+  className="h-12 w-auto object-contain"
+/>
+```
 
-### Solucao
+#### 3. Integrar FloatingWhatsApp no Index
 
-Remover o `useBlocker` e manter apenas a protecao via `beforeunload` que ja esta implementada. Esta abordagem:
-- Funciona com `BrowserRouter`
-- Protege contra refresh/fechar aba do navegador
-- Nao requer migracao de toda a arquitetura de rotas
+**Arquivo: `src/pages/Index.tsx`**
 
-### Alteracoes no Arquivo
+Adicionar o componente FloatingWhatsApp dentro do layout principal para que apareca em todas as paginas.
 
-**`src/pages/PartnerRegister.tsx`**:
+---
 
-1. **Remover import do `useBlocker`** (linha 2):
-   ```typescript
-   // ANTES
-   import { useNavigate, useBlocker } from 'react-router-dom';
-   
-   // DEPOIS
-   import { useNavigate } from 'react-router-dom';
-   ```
+### Especificacoes Tecnicas do Botao Flutuante
 
-2. **Remover o hook `useBlocker`** (linhas 124-127):
-   ```typescript
-   // REMOVER COMPLETAMENTE
-   const blocker = useBlocker(
-     ({ currentLocation, nextLocation }) =>
-       isDirty && currentLocation.pathname !== nextLocation.pathname
-   );
-   ```
+| Propriedade | Valor |
+|-------------|-------|
+| Posicao | `fixed bottom-6 right-6` |
+| z-index | `z-50` |
+| Tamanho Desktop | `w-14 h-14` |
+| Tamanho Mobile | `w-12 h-12` |
+| Cor de Fundo | `#25D366` (verde WhatsApp) |
+| Hover | `#128C7E` + scale(1.1) |
+| Animacao | Pulso sutil + bounce na entrada |
+| Visibilidade | Aparece apos 300px de scroll |
 
-3. **Remover o useEffect que depende do blocker** (linhas 129-134):
-   ```typescript
-   // REMOVER COMPLETAMENTE
-   useEffect(() => {
-     if (blocker.state === 'blocked') {
-       setShowExitDialog(true);
-       setPendingNavigation(() => () => blocker.proceed());
-     }
-   }, [blocker]);
-   ```
+### Arquivos a Modificar/Criar
 
-4. **Manter a protecao existente**:
-   - O `beforeunload` listener (linhas 111-121) continua funcionando
-   - O botao "Voltar" ja tem sua propria logica de confirmacao (linhas 546-554)
-   - O dialogo de saida continua funcionando para navegacao interna
+| Arquivo | Acao | Descricao |
+|---------|------|-----------|
+| `src/components/FloatingWhatsApp.tsx` | CRIAR | Novo componente de botao flutuante |
+| `src/components/Footer.tsx` | MODIFICAR | Substituir "AC" pela logo oficial |
+| `src/pages/Index.tsx` | MODIFICAR | Adicionar FloatingWhatsApp |
 
 ### Resultado Esperado
 
-Apos a correcao:
-- A pagina de cadastro de parceiros carregara normalmente
-- A protecao contra perda de dados via `beforeunload` permanece ativa
-- A confirmacao de saida via botao "Voltar" continua funcionando
-- O formulario multi-step funciona corretamente
-- Persistencia de rascunho em localStorage mantem-se operacional
-
-### Resumo de Alteracoes
-
-| Linha | Acao | Descricao |
-|-------|------|-----------|
-| 2 | MODIFICAR | Remover `useBlocker` do import |
-| 124-127 | REMOVER | Hook `useBlocker` |
-| 129-134 | REMOVER | useEffect que depende do blocker |
-
+1. Botao WhatsApp flutuante visivel em todas as paginas, no canto inferior direito
+2. Animacao de pulso que atrai atencao sem ser intrusiva
+3. Logo oficial da ConnecTour no footer substituindo o simbolo "AC"
+4. Experiencia consistente em desktop e mobile
