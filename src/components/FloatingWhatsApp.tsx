@@ -48,9 +48,9 @@ const FloatingWhatsApp = ({ language = "pt" }: FloatingWhatsAppProps) => {
               "hover:scale-110 hover:shadow-xl",
               "focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2",
               isVisible
-                ? "translate-y-0 opacity-100"
+                ? "translate-y-0 opacity-100 animate-shadow-pulse"
                 : "translate-y-16 opacity-0 pointer-events-none",
-              "animate-pulse hover:animate-none"
+              "hover:animate-none"
             )}
             aria-label={tooltipText}
           >

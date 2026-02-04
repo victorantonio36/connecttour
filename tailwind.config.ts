@@ -117,6 +117,10 @@ export default {
           "0%": { backgroundPosition: "-200% 0" },
           "100%": { backgroundPosition: "200% 0" },
         },
+        "shadow-pulse": {
+          "0%, 100%": { boxShadow: "0 0 0 0 rgba(37, 211, 102, 0.4)" },
+          "50%": { boxShadow: "0 0 0 12px rgba(37, 211, 102, 0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -131,6 +135,7 @@ export default {
         "heat-pulse": "heat-pulse 2s ease-in-out infinite",
         "card-enter": "card-enter 0.4s ease-out forwards",
         "shimmer": "shimmer 2s linear infinite",
+        "shadow-pulse": "shadow-pulse 2s ease-in-out infinite",
       },
     },
   },
